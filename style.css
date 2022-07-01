@@ -20,7 +20,8 @@ html {
 }
 
 body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
+    background: linear-gradient( to right, #3285a8, #32a832)
 }
 
 .calculator-grid {
@@ -28,12 +29,15 @@ body{
     max-height: 600px;
     margin: 10vh auto 0 auto;
     padding: 2px;
-    background-color: rgba(0, 0, 0, 1);
+}
+
+.display{
+    width: 100%;
+    background-color: grey
 }
 
 .current-display{
     height: 60px;
-    background-color: var(--color-sec);
     color: var(--white);
     font-size: 30px;
     display: flex;
@@ -44,7 +48,6 @@ body{
 
 .previous-display{
     height: 20px;
-    background-color: var(--color-sec);
     color: var(--white);
     font-size: 20px;
     display: flex;
@@ -53,24 +56,33 @@ body{
 }
 
 .icons{
-    background-color: var(--color-dark-grey);
     height: 40px;
     color: var(--white);
     padding: 1.4rem;
     font-size: 20px;
-    display: flex;
-
+    /* display: flex; */
 }
 
 .buttons{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 90px);
+    grid-template-rows: repeat(5, 90px);
 }
 
 button{
     line-height: 80px;
-    border: 2px solid rgba(0, 0, 0, 0.5);
+    /* border: 2px solid rgba(0, 0, 0, 0.5); */
     text-align: center;
     cursor: pointer;
     font-size: 23px;
+    transition: all .3s;
+    /* background-color: #3281a8; */
+}
+
+.buttons button:hover{
+    background-color: grey
+}
+
+#equal-to{
+    background-color:#039dfc;
 }
