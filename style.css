@@ -20,7 +20,7 @@ html {
 }
 
 body{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial;
+    font-family: 'DM Sans';
     background: linear-gradient( to right, #3285a8, #32a832)
 }
 
@@ -31,6 +31,7 @@ body{
     padding: 2px;
     display: flex;
     flex-direction: column;
+    
 }
 
 .display{
@@ -63,9 +64,10 @@ body{
 .icons{
     height: 40px;
     color: var(--white);
-    padding: 1.4rem;
-    font-size: 20px;
-    /* display: flex; */
+    padding: 1.4rem 0.2rem 3rem 1rem;
+    font-size: 22px;
+    font-weight: 800;
+    display: flex;
 }
 
 .buttons{
@@ -81,6 +83,8 @@ button{
     cursor: pointer;
     font-size: 23px;
     transition: all .3s;
+    font-family:inherit;
+    font-weight: 800;
 
 }
 
@@ -98,6 +102,7 @@ button{
     width: 21%;
     background: grey;
     transition: all .5s;
+    display: none;
 }
 
 h1{
