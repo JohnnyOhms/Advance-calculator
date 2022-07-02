@@ -11,8 +11,27 @@ buttons.forEach(btns =>{
                 previousDisplay.innerHTML = ''
                 currentDisplay.innerHTML = ''
                 break;
+            case "=" :
+                try {
+                    previousDisplay.innerHTML = eval(previousDisplay.innerText)
+                    currentDisplay.innerHTML = previousDisplay.innerHTML
+                    previousDisplay.innerText = ""
+                } catch (error) {
+                    currentDisplay.innerText = "Syntax error"
+                    previousDisplay.innerHTML = ''
+                }
+                break;
             default:
-                currentDisplay.innerHTML += e.target.innerText
+                previousDisplay.innerHTML += e.target.innerText
+
+                if(currentDisplay.innerHTML == "Syntax error"){
+                    currentDisplay.innerHTML = ""
+                }
+                if(currentDisplay.innerText){
+                    previousDisplay.innerText = currentDisplay.innerHTML
+                    previousDisplay.innerHTML += e.target.innerText
+                    currentDisplay.innerText = ""
+                }
                 break;
         }
     })
