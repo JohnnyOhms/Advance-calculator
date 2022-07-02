@@ -1,3 +1,5 @@
+//Es6 and class appraoch in calculator in javascript
+
 class Calculator {
     constructor(previousDisplay, currentDisplay){
         this.previousDisplayOperand = previousDisplay
