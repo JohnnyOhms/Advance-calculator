@@ -29,11 +29,24 @@ body{
     max-height: 600px;
     margin: 10vh auto 0 auto;
     padding: 2px;
+    display: flex;
+    flex-direction: column;
 }
 
 .display{
     width: 100%;
+    margin: 0 auto;
     background-color: grey
+    
+}
+
+.previous-display{
+    height: 20px;
+    color: var(--white);
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
 }
 
 .current-display{
@@ -43,15 +56,6 @@ body{
     display: flex;
     justify-content: flex-end;
     padding-top: 2rem;
-    padding-right: 1rem;
-}
-
-.previous-display{
-    height: 20px;
-    color: var(--white);
-    font-size: 20px;
-    display: flex;
-    justify-content: flex-end;
     padding-right: 1rem;
 }
 
@@ -65,18 +69,18 @@ body{
 
 .buttons{
     display: grid;
-    grid-template-columns: repeat(4, 90px);
+    grid-template-columns: repeat(4, 87px);
     grid-template-rows: repeat(5, 90px);
+    position: relative;
 }
 
 button{
     line-height: 80px;
-    /* border: 2px solid rgba(0, 0, 0, 0.5); */
     text-align: center;
     cursor: pointer;
     font-size: 23px;
     transition: all .3s;
-    /* background-color: #3281a8; */
+
 }
 
 .buttons button:hover{
@@ -84,5 +88,41 @@ button{
 }
 
 #equal-to{
-    background-color:#039dfc;
+    background-color:#3248a8;
+}
+
+.history{
+    position: fixed;
+    height: 450px;
+    width: 21%;
+    background: grey;
+    transition: all .5s;
+}
+
+h1{
+    text-align: center;
+    padding: 1rem;
+}
+
+ul{
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+ul li{
+    display: flex;
+    border: 0.5px solid var(--black);
+    padding: 5px 10px;
+    margin: 0;
+    justify-content: flex-end;
+    font-size: 18px;
+    font-family: inherit;
+    color: var(--white);
+
+}
+
+ul li:nth-child(odd){
+    background-color:var(--white);
+    color: var(--black);
 }
