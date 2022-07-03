@@ -27,11 +27,20 @@ buttons.forEach(btns =>{
             case "=" :
                 try {
                     if (previousDisplay.innerHTML) {
-                        previousDisplay.innerHTML = eval(previousDisplay.innerText)
+                        
+                        let historyData = {
+                            prevDisplay : previousDisplay.innerHTML,
+                            currentDisplay : "="
+                        }
+                        
+                        previousDisplay.innerHTML = eval(previousDisplay.innerText) 
                         currentDisplay.innerHTML = previousDisplay.innerHTML
-                        arrOfHistory.push(`${previousDisplay}${currentDisplay}`)  
+
+                        historyData["currentDisplay"] += " " + currentDisplay.innerHTML
+                        arrOfHistory.push(historyData) 
+
                         previousDisplay.innerText = ""
-                        console.log();
+                        console.log(arrOfHistory);
                     }
                 } catch (error) {
                     currentDisplay.innerText = "Syntax error"
@@ -60,11 +69,9 @@ buttons.forEach(btns =>{
                     
                 if(currentDisplay.innerText){
                     previousDisplay.innerText = currentDisplay.innerHTML
-                    previousDisplay.innerHTML += e.target.innerText
                     currentDisplay.innerText = ""
                 }
-                
-
+            
                 previousDisplay.innerHTML += e.target.innerText
                 break;
         }
