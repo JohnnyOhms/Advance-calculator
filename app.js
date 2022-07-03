@@ -19,7 +19,7 @@ let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)
 
 buttons.forEach(btns =>{
     btns.addEventListener("click", (e)=>{
-        switch (e.target.innerText.toString()) {
+        switch (e.target.innerText.toString()){
             case 'AC':
                 previousDisplay.innerHTML = ''
                 currentDisplay.innerHTML = ''
