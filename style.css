@@ -113,6 +113,13 @@ body{
     display: none;
 }
 
+.history ul p{
+    font-size: 18px;
+    padding-top: 10px;
+    text-align: center;
+    color: var(--white);
+}
+
 .fa-trash-can{
     position: absolute;
     right: 0;

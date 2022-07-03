@@ -3,6 +3,8 @@
 const previousDisplay = document.querySelector(".previous-display")
 const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
+const historyBtn = document.querySelector("#history")
+const history = document.querySelector(".history")
 let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)=>{
     if (previousDisplay.innerHTML) {
         previousDisplay.innerHTML =  previousDisplay.innerText.slice(0, -1)
@@ -42,12 +44,6 @@ buttons.forEach(btns =>{
                     return;
                 }
 
-                // if(previousDisplay.innerHTML.indexOf(".") !== -1) return
-                // if(previousDisplay.innerHTML.indexOf("+") !== -1) return
-                // if(previousDisplay.innerHTML.indexOf("-") !== -1) return
-                // if(previousDisplay.innerHTML.indexOf("/") !== -1) console.log("x");
-                // if(previousDisplay.innerHTML.indexOf("x") !== -1) return
-
                 if(currentDisplay.innerHTML == "Syntax error") currentDisplay.innerHTML = ""
                     
                 if(currentDisplay.innerText){
@@ -55,14 +51,20 @@ buttons.forEach(btns =>{
                     previousDisplay.innerHTML += e.target.innerText
                     currentDisplay.innerText = ""
                 }
-                previousDisplay.innerHTML += e.target.innerText
-
+                
                 if(previousDisplay.innerHTML.indexOf("+") !== -1){
                     return
                 }
+                
+                previousDisplay.innerHTML += e.target.innerText
                 break;
         }
     })
+})
+
+historyBtn.addEventListener('click', (e)=>{
+    history.style.display = 'block'
+    // historyBtn.innerHTML = `<i class="fa-regular fa-circle-arrow-left"></i>`
 })
 
 
