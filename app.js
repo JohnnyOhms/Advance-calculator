@@ -5,6 +5,8 @@ const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
 const historyBtn = document.querySelector("#history")
 const history = document.querySelector(".history")
+const arrOfHistory = []
+
 let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)=>{
     if (previousDisplay.innerHTML) {
         previousDisplay.innerHTML =  previousDisplay.innerText.slice(0, -1)
@@ -17,21 +19,31 @@ let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)
 
 buttons.forEach(btns =>{
     btns.addEventListener("click", (e)=>{
-        switch (e.target.innerText) {
+        switch (e.target.innerText.toString()) {
             case 'AC':
                 previousDisplay.innerHTML = ''
                 currentDisplay.innerHTML = ''
                 break;
             case "=" :
                 try {
-                    previousDisplay.innerHTML = eval(previousDisplay.innerText)
-                    currentDisplay.innerHTML = previousDisplay.innerHTML
-                    previousDisplay.innerText = ""
+                    if (previousDisplay.innerHTML) {
+                        previousDisplay.innerHTML = eval(previousDisplay.innerText)
+                        currentDisplay.innerHTML = previousDisplay.innerHTML
+                        arrOfHistory.push(`${previousDisplay}${currentDisplay}`)  
+                        previousDisplay.innerText = ""
+                        console.log();
+                    }
                 } catch (error) {
                     currentDisplay.innerText = "Syntax error"
                     previousDisplay.innerHTML = ''
+                    console.log(error);
                 }
                 break;
+            case '.':
+                if (previousDisplay.innerHTML.indexOf(".") !== -1) {
+                    return;
+            
+                }
             default:
                
                 if(e.target.innerHTML == "÷" ){
@@ -52,10 +64,7 @@ buttons.forEach(btns =>{
                     currentDisplay.innerText = ""
                 }
                 
-                if(previousDisplay.innerHTML.indexOf("+") !== -1){
-                    return
-                }
-                
+
                 previousDisplay.innerHTML += e.target.innerText
                 break;
         }

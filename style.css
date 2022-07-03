@@ -20,7 +20,7 @@ html {
 }
 
 body{
-    font-family: 'DM Sans';
+    /* font-family: 'DM Sans'; */
     background: linear-gradient( to right, #3285a8, #32a832)
 }
 
@@ -94,6 +94,10 @@ body{
     border: 1px solid grey;
     outline: none;
 
+}
+
+.ac{
+    grid-column: span 2;
 }
 
 .buttons button:hover{
