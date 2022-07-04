@@ -5,7 +5,7 @@ const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
 const historyBtn = document.querySelector("#history")
 const history = document.querySelector(".history")
-const arrOfHistory = []
+let arrOfHistory = []
 
 let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)=>{
     if (previousDisplay.innerHTML) {
@@ -32,16 +32,18 @@ buttons.forEach(btns =>{
                             prevDisplay : previousDisplay.innerHTML,
                             currentDisplay : "="
                         }
-                        
+
                         previousDisplay.innerHTML = eval(previousDisplay.innerText) 
                         currentDisplay.innerHTML = previousDisplay.innerHTML
 
                         historyData["currentDisplay"] += " " + currentDisplay.innerHTML
-                        arrOfHistory.push(historyData) 
 
+                        setLocalstorage(historyData);
+                  
                         previousDisplay.innerText = ""
-                        console.log(arrOfHistory);
+                      
                     }
+                
                 } catch (error) {
                     currentDisplay.innerText = "Syntax error"
                     previousDisplay.innerHTML = ''
@@ -82,5 +84,20 @@ historyBtn.addEventListener('click', (e)=>{
     history.style.display = 'block'
     // historyBtn.innerHTML = `<i class="fa-regular fa-circle-arrow-left"></i>`
 })
+
+function getFromLOcalstorage(){
+    if(localStorage.getItem("history") === null){
+        arrOfHistory = []
+    }else{
+        arrOfHistory =JSON.parse(localStorage.getItem("history", arrOfHistory))
+    }
+}
+
+function setLocalstorage (data){
+    getFromLOcalstorage();
+    arrOfHistory.push(data)
+    
+    localStorage.setItem("history", JSON.stringify(arrOfHistory))
+}
 
 
