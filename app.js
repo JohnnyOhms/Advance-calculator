@@ -5,6 +5,7 @@ const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
 const historyBtn = document.querySelector("#history")
 const history = document.querySelector(".history")
+const historyUl = document.getElementById("history-ul")
 let arrOfHistory = []
 
 let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)=>{
@@ -82,7 +83,20 @@ buttons.forEach(btns =>{
 
 historyBtn.addEventListener('click', (e)=>{
     history.style.display = 'block'
-    // historyBtn.innerHTML = `<i class="fa-regular fa-circle-arrow-left"></i>`
+    // getFromLOcalstorage();
+    // if (localStorage.getItem('history')) {
+    //     document.getElementById("no-history").style.display = "none"
+    //     arrOfHistory.forEach(list=>{
+    //         let his = document.createElement('li')
+    //        his.innerHTML= `${list.prevDisplay}${list.currentDisplay}`
+    //        historyUl.appendChild(his)
+    //     })
+       
+    // }
+
+    document.querySelector('')
+
+
 })
 
 function getFromLOcalstorage(){
@@ -100,4 +114,13 @@ function setLocalstorage (data){
     localStorage.setItem("history", JSON.stringify(arrOfHistory))
 }
 
-
+getFromLOcalstorage();
+    if (localStorage.getItem('history')) {
+        document.getElementById("no-history").style.display = "none"
+        arrOfHistory.forEach(list=>{
+            let his = document.createElement('li')
+           his.innerHTML= `${list.prevDisplay}${list.currentDisplay}`
+           historyUl.appendChild(his)
+        })
+    }
+    
