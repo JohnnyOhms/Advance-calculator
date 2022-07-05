@@ -1,22 +1,14 @@
 //inbuit function approach
 
-//window onload display 
-// window.onload = () =>{
-//     getFromLOcalstorage();
-//     if (localStorage.getItem('tasks') === null) {
-//         return;
-//     } else {
-//         displayHistory();
-//     }
-// }
-
 //Global variables
 const previousDisplay = document.querySelector(".previous-display")
 const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
-const historyBtn = document.querySelector(".style")
+const historyBtn = document.querySelector("#historyBtn")
 const history = document.querySelector(".history")
 const historyUl = document.getElementById("history-ul")
+const closeHistory = document.getElementById("go-back")
+const delHistory = document.querySelector('.fa-trash-can')
 let arrOfHistory = []
 
 let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)=>{
@@ -28,9 +20,15 @@ let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)
     }
 })
 
-
 buttons.forEach(btns =>{
     btns.addEventListener("click", (e)=>{
+
+        //hide history tab when typing and make the event listener accessable
+        history.style.display = 'none'
+        historyBtn.addEventListener('click', callhistory)
+        closeHistory.style.display = "none"
+        historyBtn.style.display = "block"
+
         switch (e.target.innerText.toString()){
             case 'AC':
                 previousDisplay.innerHTML = ''
@@ -53,7 +51,7 @@ buttons.forEach(btns =>{
                         setLocalstorage(historyData);
                   
                         previousDisplay.innerText = ""
-                      
+                  
                     }
                 
                 } catch (error) {
@@ -92,20 +90,34 @@ buttons.forEach(btns =>{
     })
 })
 
-historyBtn.addEventListener('click', (e)=>{
+let noHistoryRecord = document.createElement("p")
+noHistoryRecord.textContent = "No history record"
+noHistoryRecord.classList.add("no-history")
+
+
+historyBtn.addEventListener('click', callhistory)
+
+function callhistory(){
     history.style.display = 'block'
     displayHistory();
-    historyBtn.classList.remove("style")
-    historyBtn.classList.add()
+    historyBtn.removeEventListener("click", callhistory)
+    historyBtn.style.display = "none"
+    closeHistory.style.display = "block"
+}
+
+closeHistory.addEventListener("click", ()=>{
+    history.style.display = 'none'
+    historyBtn.style.display = "block"
+    closeHistory.style.display = "none"
+    historyBtn.addEventListener('click', callhistory)
 })
 
-let delHistory = document.querySelector('.fa-trash-can')
 delHistory.addEventListener("click", (e)=>{
     localStorage.removeItem("history")
     historyUl.innerHTML = ''
-    // displayHistory();
-    
-    history.style.display = 'none'
+    displayHistory();
+
+    historyBtn.addEventListener('click', callhistory)
 })
 
 function getFromLOcalstorage(){
@@ -124,8 +136,13 @@ function setLocalstorage (data){
 
 function displayHistory(){
 getFromLOcalstorage();
+    if(localStorage.getItem('history')=== null){
+        history.appendChild(noHistoryRecord)
+    }else{
+        noHistoryRecord.remove()
+    }
+
     if (localStorage.getItem('history')) {
-        document.getElementById("no-history").style.display = "none"
         arrOfHistory.forEach(list=>{
             let his = document.createElement('li')
            his.innerHTML= `${list.prevDisplay}${list.currentDisplay}`
