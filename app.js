@@ -1,5 +1,15 @@
 //inbuit function approach
 
+//window onload display 
+window.onload = () =>{
+    getFromLOcalstorage();
+    if (localStorage.getItem('tasks') === null) {
+        return;
+    } else {
+        displayHistory();
+    }
+}
+//Global variables
 const previousDisplay = document.querySelector(".previous-display")
 const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
@@ -83,20 +93,11 @@ buttons.forEach(btns =>{
 
 historyBtn.addEventListener('click', (e)=>{
     history.style.display = 'block'
-    // getFromLOcalstorage();
-    // if (localStorage.getItem('history')) {
-    //     document.getElementById("no-history").style.display = "none"
-    //     arrOfHistory.forEach(list=>{
-    //         let his = document.createElement('li')
-    //        his.innerHTML= `${list.prevDisplay}${list.currentDisplay}`
-    //        historyUl.appendChild(his)
-    //     })
-       
-    // }
-
-    document.querySelector('')
-
-
+    displayHistory();
+    document.querySelector('.fa-trash-can').addEventListener("click", (e)=>{
+        localStorage.removeItem("history")
+        displayHistory();
+    })
 })
 
 function getFromLOcalstorage(){
@@ -104,6 +105,9 @@ function getFromLOcalstorage(){
         arrOfHistory = []
     }else{
         arrOfHistory =JSON.parse(localStorage.getItem("history", arrOfHistory))
+    }
+    if (localStorage.getItem('history').length > 8) {
+        arrOfHistory.pop()
     }
 }
 
@@ -114,6 +118,7 @@ function setLocalstorage (data){
     localStorage.setItem("history", JSON.stringify(arrOfHistory))
 }
 
+function  displayHistory(){
 getFromLOcalstorage();
     if (localStorage.getItem('history')) {
         document.getElementById("no-history").style.display = "none"
@@ -123,4 +128,8 @@ getFromLOcalstorage();
            historyUl.appendChild(his)
         })
     }
+}
+
+
+
     
