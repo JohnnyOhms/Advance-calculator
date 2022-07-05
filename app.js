@@ -104,6 +104,7 @@ delHistory.addEventListener("click", (e)=>{
     localStorage.removeItem("history")
     historyUl.innerHTML = ''
     // displayHistory();
+    
     history.style.display = 'none'
 })
 
