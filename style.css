@@ -20,7 +20,7 @@ html {
 }
 
 body{
-    /* font-family: 'DM Sans'; */
+    font-family: 'DM Sans';
     background: linear-gradient( to right, #3285a8, #32a832)
 }
 
@@ -121,6 +121,13 @@ body{
     font-size: 18px;
     padding-top: 10px;
     text-align: center;
+    color: var(--white);
+}
+
+.history  #no-history{
+    text-align: center;
+    font-size: 20px;
+    font-family: inherit;
     color: var(--white);
 }
 

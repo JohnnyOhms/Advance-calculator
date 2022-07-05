@@ -1,19 +1,20 @@
 //inbuit function approach
 
 //window onload display 
-window.onload = () =>{
-    getFromLOcalstorage();
-    if (localStorage.getItem('tasks') === null) {
-        return;
-    } else {
-        displayHistory();
-    }
-}
+// window.onload = () =>{
+//     getFromLOcalstorage();
+//     if (localStorage.getItem('tasks') === null) {
+//         return;
+//     } else {
+//         displayHistory();
+//     }
+// }
+
 //Global variables
 const previousDisplay = document.querySelector(".previous-display")
 const currentDisplay = document.querySelector(".current-display")
 const buttons = Array.from(document.querySelectorAll('button'))
-const historyBtn = document.querySelector("#history")
+const historyBtn = document.querySelector(".style")
 const history = document.querySelector(".history")
 const historyUl = document.getElementById("history-ul")
 let arrOfHistory = []
@@ -94,10 +95,16 @@ buttons.forEach(btns =>{
 historyBtn.addEventListener('click', (e)=>{
     history.style.display = 'block'
     displayHistory();
-    document.querySelector('.fa-trash-can').addEventListener("click", (e)=>{
-        localStorage.removeItem("history")
-        displayHistory();
-    })
+    historyBtn.classList.remove("style")
+    historyBtn.classList.add()
+})
+
+let delHistory = document.querySelector('.fa-trash-can')
+delHistory.addEventListener("click", (e)=>{
+    localStorage.removeItem("history")
+    historyUl.innerHTML = ''
+    // displayHistory();
+    history.style.display = 'none'
 })
 
 function getFromLOcalstorage(){
@@ -106,19 +113,15 @@ function getFromLOcalstorage(){
     }else{
         arrOfHistory =JSON.parse(localStorage.getItem("history", arrOfHistory))
     }
-    if (localStorage.getItem('history').length > 8) {
-        arrOfHistory.pop()
-    }
 }
 
 function setLocalstorage (data){
     getFromLOcalstorage();
     arrOfHistory.push(data)
-    
     localStorage.setItem("history", JSON.stringify(arrOfHistory))
 }
 
-function  displayHistory(){
+function displayHistory(){
 getFromLOcalstorage();
     if (localStorage.getItem('history')) {
         document.getElementById("no-history").style.display = "none"
@@ -129,6 +132,7 @@ getFromLOcalstorage();
         })
     }
 }
+
 
 
 
