@@ -99,6 +99,7 @@ historyBtn.addEventListener('click', callhistory)
 
 function callhistory(){
     history.style.display = 'block'
+    historyUl.innerHTML = ''
     displayHistory();
     historyBtn.removeEventListener("click", callhistory)
     historyBtn.style.display = "none"
@@ -149,6 +150,7 @@ getFromLOcalstorage();
            historyUl.appendChild(his)
         })
     }
+    
 }
 
 
