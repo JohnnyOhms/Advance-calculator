@@ -52,7 +52,7 @@ buttons.forEach(btns =>{
                         previousDisplay.innerText = ""
                         getFromLOcalstorage();
 
-                        if (arrOfHistory.length >= 4) {
+                        if (arrOfHistory.length > 4) {
                             arrOfHistory.pop()
                         }
                         // arrOfHistory.splice(3, 1)

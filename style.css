@@ -177,3 +177,7 @@ ul li:nth-child(odd){
     background-color:var(--white);
     color: var(--black);
 }
+
+@media (max-width: 600px){
+    
+}
