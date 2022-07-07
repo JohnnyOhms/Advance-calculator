@@ -37,21 +37,32 @@ buttons.forEach(btns =>{
             case "=" :
                 try {
                     if (previousDisplay.innerHTML) {
-                        
+                    
                         let historyData = {
                             prevDisplay : previousDisplay.innerHTML,
                             currentDisplay : "="
                         }
-
-                        previousDisplay.innerHTML = eval(previousDisplay.innerText) 
+                       
+                        previousDisplay.innerHTML = CommaDeliminatedValues(eval(previousDisplay.innerText)) 
                         currentDisplay.innerHTML = previousDisplay.innerHTML
 
                         historyData["currentDisplay"] += " " + currentDisplay.innerHTML
-
                         setLocalstorage(historyData);
                   
                         previousDisplay.innerText = ""
-                  
+                        getFromLOcalstorage();
+
+                        if (arrOfHistory.length >= 4) {
+                            arrOfHistory.pop()
+                        }
+                        // arrOfHistory.splice(3, 1)
+                        // arrOfHistory.splice(4, 1)
+                        // arrOfHistory.splice(5, 1)
+                        // arrOfHistory.splice(6, 1)
+                        // arrOfHistory.splice(7, 1)
+                        // arrOfHistory.splice(8, 1)
+                            
+                        console.log(arrOfHistory);
                     }
                 
                 } catch (error) {
@@ -89,6 +100,12 @@ buttons.forEach(btns =>{
         }
     })
 })
+
+function CommaDeliminatedValues(number){
+    const floatNumber = parseFloat(number)
+    if(isNaN(floatNumber)) return ''
+    return floatNumber.toLocaleString("en")
+}
 
 let noHistoryRecord = document.createElement("p")
 noHistoryRecord.textContent = "No history record"
@@ -148,12 +165,8 @@ getFromLOcalstorage();
             let his = document.createElement('li')
            his.innerHTML= `${list.prevDisplay}${list.currentDisplay}`
            historyUl.appendChild(his)
+         
         })
     }
-    
 }
 
-
-
-
-    
