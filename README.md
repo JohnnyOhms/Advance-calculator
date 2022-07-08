@@ -5,5 +5,5 @@ Histories are being pushed to local storage to save records after page has been 
 use of array splice() methode is used to cut the least previous History at index 8
 app.js folder contains inbuit javascript approach while script.js contains ES6 and classes approach
 
-link to view on chrome https://regular-calculator.netlify.app
+link to view in chrome https://regular-calculator.netlify.app
 
