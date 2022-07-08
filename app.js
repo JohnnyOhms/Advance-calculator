@@ -16,7 +16,7 @@ let delBtn = document.getElementById('deleteItem').addEventListener('click', (e)
         previousDisplay.innerHTML =  previousDisplay.innerText.slice(0, -1)
     }
     else if (currentDisplay.innerHTML){
-        currentDisplay.innerHTML = currentDisplay.innerText.slice(0, -99)
+        currentDisplay.innerHTML = currentDisplay.innerText.slice(0, -1)
     }
 })
 
