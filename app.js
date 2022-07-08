@@ -52,17 +52,15 @@ buttons.forEach(btns =>{
                         previousDisplay.innerText = ""
                         getFromLOcalstorage();
 
-                        if (arrOfHistory.length > 4) {
-                            arrOfHistory.pop()
-                        }
-                        // arrOfHistory.splice(3, 1)
-                        // arrOfHistory.splice(4, 1)
-                        // arrOfHistory.splice(5, 1)
-                        // arrOfHistory.splice(6, 1)
-                        // arrOfHistory.splice(7, 1)
-                        // arrOfHistory.splice(8, 1)
+                        //fuction that delete the older list in this list of history
+                        if(arrOfHistory.length == 9){
+                            arrOfHistory.splice(0, 1)
+                            localStorage.setItem("history", JSON.stringify(arrOfHistory))
                             
-                        console.log(arrOfHistory);
+                            historyUl.innerHTML = ""
+                            displayHistory();
+                            console.log(arrOfHistory);
+                        }
                     }
                 
                 } catch (error) {
