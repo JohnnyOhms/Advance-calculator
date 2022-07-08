@@ -94,6 +94,7 @@ body{
     font-weight: 800;
     border: 1px solid grey;
     outline: none;
+    transition: all .3s;
 }
 
 .ac{
@@ -102,6 +103,11 @@ body{
 
 .buttons button:hover{
     background-color: grey
+}
+
+.buttons button:active{
+    background-color:grey;
+    font-size: 15px;
 }
 
 #equal-to{
