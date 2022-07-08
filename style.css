@@ -72,6 +72,15 @@ body{
     cursor: pointer;
 }
 
+i{
+    transition: all .3s;
+}
+
+i:active{
+    color:grey;
+    font-size: 28px;  
+}
+
 .fa-delete-left{
     font-size: 30px;
 }
@@ -183,6 +192,3 @@ ul li:nth-child(odd){
     color: var(--black);
 }
 
-@media (max-width: 600px) {
-    
-}
