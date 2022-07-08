@@ -56,10 +56,8 @@ buttons.forEach(btns =>{
                         if(arrOfHistory.length == 9){
                             arrOfHistory.splice(0, 1)
                             localStorage.setItem("history", JSON.stringify(arrOfHistory))
-                            
                             historyUl.innerHTML = ""
                             displayHistory();
-                            console.log(arrOfHistory);
                         }
                     }
                 
